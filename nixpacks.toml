@@ -1,0 +1,15 @@
+[providers]
+  node = "20"
+
+[variables]
+  NIXPACKS_PHP_ROOT_DIR = '/public'
+
+[phases.setup]
+  nixPkgs = ['php82', 'php82Packages.composer', 'nodejs_20']
+
+[phases.build]
+  cmds = [
+    'composer install --optimize-autoloader',
+    'npm install',
+    'npm run build'
+  ]
